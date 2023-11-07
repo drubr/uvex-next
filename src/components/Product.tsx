@@ -27,6 +27,20 @@ export default function Product({ product }: ProductProps) {
         <div>
           <div>{product.title}</div>
           <div>{product.variants[0].price}</div>
+          {product.variants.length > 0 && (
+            <ul className="flex gap-2">
+              {product.variants.map((variant, index) => (
+                <li key={product.id + index}>
+                  <Link
+                    href={`/product/${product.id}?variant=${variant.option}`}
+                    className="flex items-center justify-center border p-2"
+                  >
+                    {variant.option}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </button>
     </Link>

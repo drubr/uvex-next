@@ -35,7 +35,7 @@ export default function CategoryPage() {
           </div>
 
           {productList && (
-            <ul className="grid grid-cols-3 gap-4">
+            <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {productList.map((product) => (
                 <li key={product.id}>
                   <Product product={product} />
