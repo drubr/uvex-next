@@ -12,5 +12,8 @@ export interface Product {
   variants: Variant[];
   images: string[];
   stock: number; // Total stock for all variants
-  productAvailability: boolean; // Indicates whether the product is available or not
+  isAvailable: boolean; // Indicates whether the product is available or not
+  manufacturer: string;
+  category: string;
+  isNew: boolean;
 }
