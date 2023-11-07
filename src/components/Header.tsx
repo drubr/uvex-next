@@ -15,7 +15,7 @@ export default function Header() {
         </li>
         <li>
           <Link
-            href="/product"
+            href="/product/1"
             className="rounded bg-transparent p-4 text-black/90 hover:bg-black/10 hover:text-black"
           >
             Product
