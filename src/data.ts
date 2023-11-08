@@ -13,7 +13,7 @@ export const products: IProduct[] = [
         stock: 10,
       },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
-      { id: 3, option: "Large", price: 29.99, stock: 8 },
+      { id: 3, option: "Large", price: 29.99, stock: 0 },
     ],
     images: [
       "https://example.com/image1.jpg",
@@ -31,7 +31,7 @@ export const products: IProduct[] = [
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
-    rating: 1,
+    rating: 4,
   },
   {
     id: 2,
@@ -83,7 +83,7 @@ export const products: IProduct[] = [
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
-    rating: 1,
+    rating: 5,
   },
   {
     id: 4,
@@ -109,7 +109,7 @@ export const products: IProduct[] = [
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
-    rating: 1,
+    rating: 2,
   },
   {
     id: 5,
@@ -135,6 +135,6 @@ export const products: IProduct[] = [
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
-    rating: 1,
+    rating: 3,
   },
 ];

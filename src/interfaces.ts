@@ -14,14 +14,14 @@ interface Attribute {
 export interface Product {
   id: number;
   title: string;
+  description: string;
   variants: Variant[];
   images: string[];
-  stock: number; // Total stock for all variants
-  isAvailable: boolean; // Indicates whether the product is available or not
+  stock: number;
+  isAvailable: boolean;
   manufacturer: string;
   category: string;
   isNew: boolean;
-  description: string;
   attributes: Attribute[];
-  rating: number;
+  rating: 1 | 2 | 3 | 4 | 5;
 }

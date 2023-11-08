@@ -4,6 +4,7 @@ import { products } from "@/data";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
+import { StarIcon } from "@heroicons/react/24/outline";
 
 const tabs = [
   {
@@ -30,9 +31,6 @@ export default function ProductDetailPage({
   const variant = product.variants.find(
     (variant) => variant.option === selectedVariant,
   );
-  const variantPrice = product.variants.find(
-    (variant) => variant.option === selectedVariant,
-  )?.price;
 
   if (!product.isAvailable) router.replace("/category");
 
@@ -73,7 +71,20 @@ export default function ProductDetailPage({
                 </li>
               ))}
 
-            {productDetailTab === 2 && <div>{product.rating}</div>}
+            {productDetailTab === 2 && (
+              <div className="flex gap-0.5">
+                {[...Array(5).keys()].map((rating, index) => (
+                  <StarIcon
+                    key={index}
+                    className={`h-5 w-5 text-amber-400 ${
+                      index + 1 <= product.rating
+                        ? "fill-amber-400"
+                        : "fill-none"
+                    }`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -81,27 +92,43 @@ export default function ProductDetailPage({
           <header>
             <h1 className="text-2xl">{product.title}</h1>
             <small>Product {product.id}</small>
-            <div className="mt-4">{variantPrice}</div>
+            <div className="mt-4">{variant?.price}</div>
           </header>
 
           {product.variants.length > 0 && (
             <ul className="flex gap-2">
               {product.variants.map((variant, index) => (
                 <li key={product.id + index}>
-                  <Link
-                    href={`/product/${product.id}?variant=${variant.option}`}
-                    className={`flex items-center justify-center border p-2 ${
-                      selectedVariant === variant.option
-                        ? "border-black"
-                        : "border-gray-200"
-                    }`}
-                  >
-                    {variant.option}
-                  </Link>
+                  {variant.stock > 0 ? (
+                    <Link
+                      href={`/product/${product.id}?variant=${variant.option}`}
+                      className={`flex items-center justify-center border p-2 ${
+                        selectedVariant === variant.option
+                          ? "border-black"
+                          : "border-gray-200"
+                      }`}
+                    >
+                      {variant.option}
+                    </Link>
+                  ) : (
+                    <button
+                      className="flex items-center justify-center border p-2"
+                      disabled
+                    >
+                      <div className="opacity-30">{variant.option}</div>
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>
           )}
+
+          <button
+            className="mt-8 max-w-md bg-black p-4 text-white"
+            disabled={variant?.stock === 0}
+          >
+            Add to cart
+          </button>
         </div>
       </section>
     </div>
