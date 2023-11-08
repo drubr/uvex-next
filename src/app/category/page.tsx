@@ -10,7 +10,6 @@ export default function CategoryPage() {
   const searchParams = useSearchParams();
   const [productList, setProductList] = useState(products);
   const search = searchParams.get("filter");
-  console.log(search);
 
   useEffect(() => {
     if (search === null) setProductList(products);

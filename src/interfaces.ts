@@ -5,6 +5,11 @@ export interface Variant {
   stock: number;
 }
 
+interface Attribute {
+  key: string;
+  value: string;
+}
+
 export interface Product {
   id: number;
   title: string;
@@ -16,4 +21,5 @@ export interface Product {
   manufacturer: string;
   category: string;
   isNew: boolean;
+  attributes: Attribute[];
 }

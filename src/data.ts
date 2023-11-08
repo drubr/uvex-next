@@ -20,6 +20,11 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: false,
+    attributes: [
+      { key: "Type", value: "Helmet" },
+      { key: "Category", value: "Racing sport" },
+      { key: "Weight", value: "550g" },
+    ],
   },
   {
     id: 2,
@@ -40,6 +45,11 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    attributes: [
+      { key: "Type", value: "Helmet" },
+      { key: "Category", value: "Racing sport" },
+      { key: "Weight", value: "550g" },
+    ],
   },
   {
     id: 3,
@@ -60,6 +70,11 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    attributes: [
+      { key: "Type", value: "Helmet" },
+      { key: "Category", value: "Racing sport" },
+      { key: "Weight", value: "550g" },
+    ],
   },
   {
     id: 4,
@@ -80,6 +95,11 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    attributes: [
+      { key: "Type", value: "Helmet" },
+      { key: "Category", value: "Racing sport" },
+      { key: "Weight", value: "550g" },
+    ],
   },
   {
     id: 5,
@@ -100,5 +120,10 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: false,
+    attributes: [
+      { key: "Type", value: "Helmet" },
+      { key: "Category", value: "Racing sport" },
+      { key: "Weight", value: "550g" },
+    ],
   },
 ];
