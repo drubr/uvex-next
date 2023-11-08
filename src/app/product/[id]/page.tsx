@@ -3,6 +3,19 @@
 import { products } from "@/data";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+
+const tabs = [
+  {
+    title: "Details",
+  },
+  {
+    title: "Eigenschaften",
+  },
+  {
+    title: "Bewertungen",
+  },
+];
 
 export default function ProductDetailPage({
   params,
@@ -11,8 +24,12 @@ export default function ProductDetailPage({
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [productDetailTab, setProductDetailTabs] = useState(0);
   const product = products[+params.id - 1];
   const selectedVariant = searchParams.get("variant");
+  const variant = product.variants.find(
+    (variant) => variant.option === selectedVariant,
+  );
   const variantPrice = product.variants.find(
     (variant) => variant.option === selectedVariant,
   )?.price;
@@ -26,24 +43,37 @@ export default function ProductDetailPage({
           <div className="min-h-[50vh] rounded bg-gray-100"></div>
           <div className="grid gap-4">
             <header className="flex gap-4">
-              <button className="border-b-2 border-orange-400 pb-2">
-                Details
-              </button>
-              <button className="border-b border-transparent pb-2">
-                Eigenschaften
-              </button>
-              <button className="border-b border-transparent pb-2">
-                Bewertungen
-              </button>
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab.title}
+                  className={`${
+                    index === productDetailTab
+                      ? "border-orange-400"
+                      : "border-transparent"
+                  } border-b-2 pb-2 transition`}
+                  onClick={() => setProductDetailTabs(index)}
+                >
+                  {tab.title}
+                </button>
+              ))}
             </header>
-            <div>{product.description}</div>
-            <div>
-              {product.attributes.map((attribute) => (
+
+            {productDetailTab === 0 && (
+              <div>
+                {variant?.description
+                  ? variant.description
+                  : product.description}
+              </div>
+            )}
+
+            {productDetailTab === 1 &&
+              product.attributes.map((attribute) => (
                 <li key={attribute.key}>
                   {attribute.key}: {attribute.value}
                 </li>
               ))}
-            </div>
+
+            {productDetailTab === 2 && <div>{product.rating}</div>}
           </div>
         </div>
 

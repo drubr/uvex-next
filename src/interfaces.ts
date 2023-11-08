@@ -3,6 +3,7 @@ export interface Variant {
   option: string;
   price: number;
   stock: number;
+  description?: string;
 }
 
 interface Attribute {
@@ -13,7 +14,6 @@ interface Attribute {
 export interface Product {
   id: number;
   title: string;
-  description: string;
   variants: Variant[];
   images: string[];
   stock: number; // Total stock for all variants
@@ -21,5 +21,7 @@ export interface Product {
   manufacturer: string;
   category: string;
   isNew: boolean;
+  description: string;
   attributes: Attribute[];
+  rating: number;
 }

@@ -4,9 +4,14 @@ export const products: IProduct[] = [
   {
     id: 1,
     title: "Example Product",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     variants: [
-      { id: 1, option: "Small", price: 19.99, stock: 10 },
+      {
+        id: 1,
+        option: "Small",
+        description: "This is a variant description",
+        price: 19.99,
+        stock: 10,
+      },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
       { id: 3, option: "Large", price: 29.99, stock: 8 },
     ],
@@ -20,16 +25,17 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: false,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
       { key: "Type", value: "Helmet" },
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
+    rating: 1,
   },
   {
     id: 2,
     title: "Next Example Product",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     variants: [
       { id: 1, option: "Small", price: 19.99, stock: 10 },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
@@ -45,16 +51,17 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
       { key: "Type", value: "Helmet" },
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
+    rating: 1,
   },
   {
     id: 3,
     title: "Example product – 3",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     variants: [
       { id: 1, option: "Small", price: 19.99, stock: 10 },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
@@ -70,16 +77,17 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
       { key: "Type", value: "Helmet" },
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
+    rating: 1,
   },
   {
     id: 4,
     title: "New in: Example prodcut",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     variants: [
       { id: 1, option: "Small", price: 19.99, stock: 10 },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
@@ -95,16 +103,17 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: true,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
       { key: "Type", value: "Helmet" },
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
+    rating: 1,
   },
   {
     id: 5,
     title: "Another Product Title",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     variants: [
       { id: 1, option: "Small", price: 19.99, stock: 10 },
       { id: 2, option: "Medium", price: 24.99, stock: 15 },
@@ -120,10 +129,12 @@ export const products: IProduct[] = [
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
     isNew: false,
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
       { key: "Type", value: "Helmet" },
       { key: "Category", value: "Racing sport" },
       { key: "Weight", value: "550g" },
     ],
+    rating: 1,
   },
 ];
