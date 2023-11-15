@@ -54,7 +54,7 @@ export default function ProductDetailPage({
               {product.images.map((image, index) => (
                 <li
                   key={index}
-                  className={`inline-flex items-center justify-center border p-4 transition ${
+                  className={`inline-flex cursor-pointer items-center justify-center border p-4 transition ${
                     index === thumbnail
                       ? "border-orange-400"
                       : "border-transparent"
@@ -157,12 +157,23 @@ export default function ProductDetailPage({
             </ul>
           )}
 
-          <button
-            className="mt-8 max-w-md bg-black p-4 text-white"
-            disabled={variant?.stock === 0}
-          >
-            Add to cart
-          </button>
+          <div className="mt-8 grid w-full max-w-md">
+            <button
+              className="bg-black p-4 text-white disabled:bg-black/30"
+              disabled={variant?.stock === 0 || !variant}
+            >
+              {variant ? "Add to cart" : "Please select a variant"}
+            </button>
+
+            {variant && (
+              <Link
+                href="/checkout"
+                className="animate-fadeUp mx-auto w-full p-4 text-center delay-700"
+              >
+                Direct Checkout
+              </Link>
+            )}
+          </div>
         </div>
       </section>
     </div>
