@@ -1,6 +1,6 @@
 "use client";
 
-import Product from "@/components/Product";
+import ProductCard from "@/components/ProductCard";
 import { products } from "@/data";
 import FilterButton from "@/components/FilterButton";
 import { useSearchParams } from "next/navigation";
@@ -37,7 +37,7 @@ export default function CategoryPage() {
             <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {productList.map((product) => (
                 <li key={product.id}>
-                  <Product product={product} />
+                  <ProductCard product={product} />
                 </li>
               ))}
             </ul>

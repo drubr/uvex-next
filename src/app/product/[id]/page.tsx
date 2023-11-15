@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { StarIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 const tabs = [
   {
@@ -26,6 +27,7 @@ export default function ProductDetailPage({
   const searchParams = useSearchParams();
   const router = useRouter();
   const [productDetailTab, setProductDetailTabs] = useState(0);
+  const [thumbnail, setThumbnail] = useState(0);
   const product = products[+params.id - 1];
   const selectedVariant = searchParams.get("variant");
   const variant = product.variants.find(
@@ -35,10 +37,42 @@ export default function ProductDetailPage({
   if (!product.isAvailable) router.replace("/category");
 
   return (
-    <div>
-      <section className="grid items-start gap-8 p-8 lg:grid-cols-2">
+    <div className="mt-4">
+      <section className="mx-auto grid w-full max-w-screen-xl items-start gap-8 p-8 lg:grid-cols-[2fr_1fr]">
         <div className="grid gap-8">
-          <div className="min-h-[50vh] rounded bg-gray-100"></div>
+          <div className="grid min-h-[50vh] gap-8 rounded">
+            <Image
+              width={480}
+              height={480}
+              src={product.images[thumbnail]}
+              className="mx-auto object-contain"
+              alt={product.title}
+              loading="lazy"
+            />
+
+            <ul className="flex w-full max-w-full gap-8">
+              {product.images.map((image, index) => (
+                <li
+                  key={index}
+                  className={`inline-flex items-center justify-center border p-4 transition ${
+                    index === thumbnail
+                      ? "border-orange-400"
+                      : "border-transparent"
+                  }`}
+                  onClick={() => setThumbnail(index)}
+                >
+                  <Image
+                    width={128}
+                    height={128}
+                    src={image}
+                    className="object-contain"
+                    alt={`${product.title} thumbnail ${index}`}
+                    loading="lazy"
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="grid gap-4">
             <header className="flex gap-4">
               {tabs.map((tab, index) => (
@@ -88,7 +122,7 @@ export default function ProductDetailPage({
           </div>
         </div>
 
-        <div className="sticky top-0 grid gap-2">
+        <div className="sticky top-4 grid gap-2">
           <header>
             <h1 className="text-2xl">{product.title}</h1>
             <small>Product {product.id}</small>
