@@ -143,3 +143,13 @@ export const products: IProduct[] = [
     rating: 3,
   },
 ];
+
+/**
+ * export async function getProducts(): Promise<IProduct[]> {
+ *   const res = await fs.readFile(
+ *     process.cwd() + "/public/products.json",
+ *     "utf8",
+ *   );
+ *   return JSON.parse(res);
+ * }
+ * */
