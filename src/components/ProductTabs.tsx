@@ -25,8 +25,6 @@ export default function ProductTabs({ productId }: { productId: string }) {
 
   if (!product) return <div>No product found. :)</div>;
 
-  if (!variant) return <div>No variant found. :)</div>;
-
   return (
     <div className="grid gap-4">
       <header className="flex gap-4">
@@ -45,7 +43,7 @@ export default function ProductTabs({ productId }: { productId: string }) {
 
       {selectedTab === 0 && (
         <div>
-          {variant.description ? variant.description : product.description}
+          {variant?.description ? variant.description : product.description}
         </div>
       )}
 

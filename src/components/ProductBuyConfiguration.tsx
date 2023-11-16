@@ -14,10 +14,6 @@ export default function ProductBuyConfiguration({
 
   if (!product) return <div>No product found. :)</div>;
 
-  if (!variant) return <div>No variant found. :)</div>;
-
-  if (!selectedVariant) return <div>Please select a variant. :)</div>;
-
   return (
     <>
       <header>
