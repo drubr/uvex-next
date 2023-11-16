@@ -10,12 +10,15 @@ import Image from "next/image";
 const tabs = [
   {
     title: "Details",
+    value: "details",
   },
   {
     title: "Eigenschaften",
+    value: "attributes",
   },
   {
     title: "Bewertungen",
+    value: "rating",
   },
 ];
 
@@ -26,10 +29,10 @@ export default function ProductDetailPage({
 }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [productDetailTab, setProductDetailTabs] = useState(0);
-  const [thumbnail, setThumbnail] = useState(0);
   const product = products[+params.id - 1];
   const selectedVariant = searchParams.get("variant");
+  const [selectedTab, setSelectedTabs] = useState(0);
+  const [selectedThumbnail, setSelectedThumbnail] = useState(0);
   const variant = product.variants.find(
     (variant) => variant.option === selectedVariant,
   );
@@ -44,10 +47,11 @@ export default function ProductDetailPage({
             <Image
               width={480}
               height={480}
-              src={product.images[thumbnail]}
+              src={product.images[selectedThumbnail]}
               className="mx-auto object-contain"
               alt={product.title}
-              loading="lazy"
+              draggable={false}
+              priority
             />
 
             <ul className="flex w-full max-w-full gap-8">
@@ -55,11 +59,11 @@ export default function ProductDetailPage({
                 <li
                   key={index}
                   className={`inline-flex cursor-pointer items-center justify-center border p-4 transition ${
-                    index === thumbnail
+                    index === selectedThumbnail
                       ? "border-orange-400"
                       : "border-transparent"
                   }`}
-                  onClick={() => setThumbnail(index)}
+                  onClick={() => setSelectedThumbnail(index)}
                 >
                   <Image
                     width={128}
@@ -68,6 +72,7 @@ export default function ProductDetailPage({
                     className="object-contain"
                     alt={`${product.title} thumbnail ${index}`}
                     loading="lazy"
+                    draggable={false}
                   />
                 </li>
               ))}
@@ -79,18 +84,18 @@ export default function ProductDetailPage({
                 <button
                   key={tab.title}
                   className={`${
-                    index === productDetailTab
+                    index === selectedTab
                       ? "border-orange-400"
                       : "border-transparent"
                   } border-b-2 pb-2 transition`}
-                  onClick={() => setProductDetailTabs(index)}
+                  onClick={() => setSelectedTabs(index)}
                 >
                   {tab.title}
                 </button>
               ))}
             </header>
 
-            {productDetailTab === 0 && (
+            {selectedTab === 0 && (
               <div>
                 {variant?.description
                   ? variant.description
@@ -98,14 +103,14 @@ export default function ProductDetailPage({
               </div>
             )}
 
-            {productDetailTab === 1 &&
+            {selectedTab === 1 &&
               product.attributes.map((attribute) => (
                 <li key={attribute.key}>
                   {attribute.key}: {attribute.value}
                 </li>
               ))}
 
-            {productDetailTab === 2 && (
+            {selectedTab === 2 && (
               <div className="flex gap-0.5">
                 {[...Array(5).keys()].map((rating, index) => (
                   <StarIcon
@@ -141,6 +146,7 @@ export default function ProductDetailPage({
                           ? "border-black"
                           : "border-gray-200"
                       }`}
+                      scroll={false}
                     >
                       {variant.option}
                     </Link>
@@ -168,7 +174,7 @@ export default function ProductDetailPage({
             {variant && (
               <Link
                 href="/checkout"
-                className="animate-fadeUp mx-auto w-full p-4 text-center delay-700"
+                className="mx-auto w-full animate-fadeUp p-4 text-center delay-700"
               >
                 Direct Checkout
               </Link>
