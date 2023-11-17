@@ -1,8 +1,8 @@
 import { Product } from "@/interfaces";
 import { useState } from "react";
-import ImageBox from "@/components/ProductCard/ImageBox";
-import VariantSelection from "@/components/ProductCard/VariantSelection";
-import TextBox from "@/components/ProductCard/TextBox";
+import ProductImageBox from "@/components/ProductCard/ProductImageBox";
+import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
+import ProductTextBox from "@/components/ProductCard/ProductTextBox";
 
 interface ProductProps {
   product: Product;
@@ -16,12 +16,18 @@ export default function ProductCard({ product }: ProductProps) {
       disabled={!product.isAvailable}
       className="grid w-full gap-2 bg-white p-4 text-left disabled:opacity-40"
     >
-      <ImageBox productId={productId} selectedVariant={selectedVariant} />
+      <ProductImageBox
+        productId={productId}
+        selectedVariant={selectedVariant}
+      />
 
       <div className="grid gap-4">
-        <TextBox productId={productId} selectedVariant={selectedVariant} />
+        <ProductTextBox
+          productId={productId}
+          selectedVariant={selectedVariant}
+        />
 
-        <VariantSelection
+        <ProductVariantSelection
           productId={productId}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}

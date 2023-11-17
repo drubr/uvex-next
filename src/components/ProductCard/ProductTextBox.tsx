@@ -2,7 +2,7 @@ import { useGetProduct } from "@/hooks/useGetProduct";
 import { useRouter } from "next/navigation";
 import { Variant } from "@/interfaces";
 
-export default function TextBox({
+export default function ProductTextBox({
   productId,
   selectedVariant,
 }: {

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { Variant } from "@/interfaces";
 
-export default function ImageBox({
+export default function ProductImageBox({
   productId,
   selectedVariant,
 }: {

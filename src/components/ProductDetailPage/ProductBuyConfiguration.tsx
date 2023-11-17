@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { useGetProductVariant } from "@/hooks/useGetProductVariant";
-import VariantSelection from "@/components/ProductCard/VariantSelection";
+import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
 
 export default function ProductBuyConfiguration({
   productId,
@@ -22,7 +22,7 @@ export default function ProductBuyConfiguration({
       </header>
 
       {product.variants.length > 0 && (
-        <VariantSelection
+        <ProductVariantSelection
           productId={productId}
           selectedVariant={variant}
           page="Product"

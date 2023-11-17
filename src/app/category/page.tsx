@@ -1,6 +1,6 @@
 "use client";
 
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { products } from "@/data";
 import FilterButton from "@/components/FilterButton";
 import { useSearchParams } from "next/navigation";

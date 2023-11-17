@@ -6,7 +6,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Variant } from "@/interfaces";
 import { formatVariantTitle } from "@/helpers";
 
-export default function VariantSelection({
+export default function ProductVariantSelection({
   productId,
   selectedVariant,
   setSelectedVariant,

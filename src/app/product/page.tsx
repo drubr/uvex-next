@@ -1,7 +1,7 @@
 "use client";
 
 import { useGetAllProducts } from "@/hooks/useGetAllProducts";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/ProductCard";
 
 export default function ProductPage() {
   const prodcuts = useGetAllProducts();

@@ -2,7 +2,7 @@
 
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useEffect, useState } from "react";
-import ProductCard from "@/components/ProductCard/ProductCard";
+import ProductCard from "@/components/ProductCard";
 import { products } from "@/data";
 
 export default function CheckoutPage() {
