@@ -25,6 +25,7 @@ export default function ProductCard({ product }: ProductProps) {
           productId={productId}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
+          page="Category"
         />
       </div>
     </button>

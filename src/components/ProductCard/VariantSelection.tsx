@@ -10,10 +10,12 @@ export default function VariantSelection({
   productId,
   selectedVariant,
   setSelectedVariant,
+  page,
 }: {
   productId: string;
-  selectedVariant: Variant;
-  setSelectedVariant: Dispatch<SetStateAction<Variant>>;
+  selectedVariant?: Variant;
+  setSelectedVariant?: Dispatch<SetStateAction<Variant>>;
+  page: "Category" | "Product";
 }) {
   const product = useGetProduct(productId);
   const pathname = usePathname();
@@ -52,18 +54,26 @@ export default function VariantSelection({
 
   if (!product || !product.variants) return null;
 
+  const productHref = (variant: Variant) => {
+    return page === "Category"
+      ? setProductUrl(product.title, variant.title)
+      : `/product/${product.id}?variant=${formatVariantTitle(variant.title)}`;
+  };
+
   return (
     product.variants.length > 0 && (
       <ul className="flex min-h-[3.875rem] items-center gap-2">
         {product.variants.map((variant, index) => (
           <li
             key={product.id + index}
-            onClick={() => setSelectedVariant(variant)}
+            onClick={() => {
+              setSelectedVariant ? setSelectedVariant(variant) : null;
+            }}
           >
             <Link
-              href={setProductUrl(product.title, variant.title)}
+              href={productHref(variant)}
               className={`flex items-center justify-center border p-2 ${
-                variant.title === selectedVariant.title
+                variant.title === selectedVariant?.title
                   ? "border-black"
                   : "border-gray-200"
               }`}
