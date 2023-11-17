@@ -45,7 +45,7 @@ export default function ProductVariantSelection({
         pathname +
         "?" +
         createQueryString("product", `${formatVariantTitle(productTitle)}`) +
-        "?" +
+        "&" +
         createQueryString("variant", `${formatVariantTitle(variantTitle)}`)
       );
     },
@@ -57,7 +57,7 @@ export default function ProductVariantSelection({
   const productHref = (variant: Variant) => {
     return page === "Category"
       ? setProductUrl(product.title, variant.title)
-      : `/product/${product.id}?variant=${formatVariantTitle(variant.title)}`;
+      : `/product/${product.id}&variant=${formatVariantTitle(variant.title)}`;
   };
 
   return (
