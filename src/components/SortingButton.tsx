@@ -9,7 +9,6 @@ const options: SortingOption[] = [
   "Price lowest",
   "Price highest",
   "Alphabetical",
-  "Released",
 ];
 
 export default function SortingButton({
@@ -49,7 +48,7 @@ export default function SortingButton({
       className="bg-transparent"
       onChange={onSelect}
     >
-      <option value="">None</option>
+      <option value="">Sorting</option>
       {options.map((opt) => (
         <option key={opt} value={opt}>
           {opt}

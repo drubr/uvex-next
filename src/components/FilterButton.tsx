@@ -37,15 +37,14 @@ export default function FilterButton({
   };
 
   return (
-    <label className="relative flex items-center gap-2">
-      Filter:
+    <div className="relative flex items-center gap-2">
       <select
         name="productListFilter"
         className="bg-black p-2 text-white"
         value={selected ?? ""}
         onChange={onSelect}
       >
-        <option value="">None</option>
+        <option value="">Filter</option>
         {options.map((opt) => (
           <option key={opt} value={opt}>
             {opt}
@@ -53,6 +52,6 @@ export default function FilterButton({
         ))}
       </select>
       <div className="absolute -right-2 top-0 h-full w-2 bg-black"></div>
-    </label>
+    </div>
   );
 }

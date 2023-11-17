@@ -4,5 +4,4 @@ export type SortingOption =
   | "Relevance"
   | "Price lowest"
   | "Price highest"
-  | "Alphabetical"
-  | "Released";
+  | "Alphabetical";
