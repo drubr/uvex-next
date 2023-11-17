@@ -27,7 +27,7 @@ export default function CheckoutPage() {
             </div>
           </div>
           <div className="rounded bg-gray-100 p-4">
-            <ProductCard product={products[0]} />
+            <ProductCard product={products[0]} priority={true} />
           </div>
         </div>
       )}
