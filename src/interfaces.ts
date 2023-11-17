@@ -1,16 +1,7 @@
-export interface Variant {
-  id: number;
-  option: string;
-  price: number;
-  stock: number;
-  description?: string;
-}
-
 interface Attribute {
   key: string;
   value: string;
 }
-
 export interface Product {
   id: number;
   title: string;
@@ -24,4 +15,11 @@ export interface Product {
   isNew: boolean;
   attributes: Attribute[];
   rating: 1 | 2 | 3 | 4 | 5;
+}
+
+export interface Variant extends Partial<Product> {
+  id: number;
+  option: string;
+  price: number;
+  stock: number;
 }

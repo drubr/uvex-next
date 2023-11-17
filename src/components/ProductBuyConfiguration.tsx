@@ -30,7 +30,7 @@ export default function ProductBuyConfiguration({
                 <Link
                   href={`/product/${product.id}?variant=${variant.option}`}
                   className={`flex items-center justify-center border p-2 ${
-                    selectedVariant === variant.option
+                    selectedVariant === variant.option.replaceAll(" ", "-")
                       ? "border-black"
                       : "border-gray-200"
                   }`}

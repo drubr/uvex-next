@@ -2,7 +2,7 @@
 
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useEffect, useState } from "react";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/ProductCard/ProductCard";
 import { products } from "@/data";
 
 export default function CheckoutPage() {
@@ -19,7 +19,7 @@ export default function CheckoutPage() {
     <div className="flex min-h-[60vh] items-center justify-center">
       {showSpinner && <LoadingSpinner />}
       {!showSpinner && (
-        <div className="animate-fadeUp grid grid-cols-[2fr_1fr] gap-8">
+        <div className="grid animate-fadeUp grid-cols-[2fr_1fr] gap-8">
           <div className="rounded bg-gray-100 p-8">
             <div className="grid gap-4">
               <div className="rounded-full bg-gray-200 p-4"></div>
