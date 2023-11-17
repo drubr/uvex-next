@@ -3,9 +3,10 @@
 import ProductCard from "@/components/ProductCard";
 import FilterButton from "@/components/FilterButton";
 import { useProductList } from "@/hooks/useProductList";
+import SortingButton from "@/components/SortingButton";
 
 export default function CategoryPage() {
-  const { productList, filter } = useProductList();
+  const { productList, filter, sorting } = useProductList();
 
   return (
     <>
@@ -17,7 +18,7 @@ export default function CategoryPage() {
         <div className="mx-auto grid max-w-screen-xl items-start gap-8">
           <div className="flex justify-between gap-4">
             <FilterButton selected={filter} />
-            <button>Sortieren</button>
+            <SortingButton selected={sorting} />
           </div>
 
           {productList && (

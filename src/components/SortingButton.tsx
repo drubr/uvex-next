@@ -2,11 +2,17 @@
 
 import type { ChangeEvent } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import type { FilterOption } from "@/types";
+import type { SortingOption } from "@/types";
 
-const options: FilterOption[] = ["In stock"];
+const options: SortingOption[] = [
+  "Relevance",
+  "Price lowest",
+  "Price highest",
+  "Alphabetical",
+  "Released",
+];
 
-export default function FilterButton({
+export default function SortingButton({
   selected,
 }: {
   selected: string | null;
@@ -25,9 +31,9 @@ export default function FilterButton({
     const value = event.target.value.trim();
 
     if (!value) {
-      current.delete("filter");
+      current.delete("sorting");
     } else {
-      current.set("filter", event.target.value);
+      current.set("sorting", event.target.value);
     }
 
     const search = current.toString();
@@ -37,22 +43,18 @@ export default function FilterButton({
   };
 
   return (
-    <label className="relative flex items-center gap-2">
-      Filter:
-      <select
-        name="productListFilter"
-        className="bg-black p-2 text-white"
-        value={selected ?? ""}
-        onChange={onSelect}
-      >
-        <option value="">None</option>
-        {options.map((opt) => (
-          <option key={opt} value={opt}>
-            {opt}
-          </option>
-        ))}
-      </select>
-      <div className="absolute -right-2 top-0 h-full w-2 bg-black"></div>
-    </label>
+    <select
+      name="productListSorting"
+      value={selected ?? ""}
+      className="bg-transparent"
+      onChange={onSelect}
+    >
+      <option value="">None</option>
+      {options.map((opt) => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
   );
 }
