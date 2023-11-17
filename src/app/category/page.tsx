@@ -1,24 +1,11 @@
 "use client";
 
 import ProductCard from "@/components/ProductCard";
-import { products } from "@/data";
 import FilterButton from "@/components/FilterButton";
-import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useProductList } from "@/hooks/useProductList";
 
 export default function CategoryPage() {
-  const searchParams = useSearchParams();
-  const [productList, setProductList] = useState(products);
-  const search = searchParams.get("filter");
-
-  useEffect(() => {
-    if (search === null) setProductList(products);
-
-    if (search === "In stock")
-      setProductList((prevState) =>
-        prevState.filter((product) => product.isAvailable),
-      );
-  }, [search]);
+  const { productList, filter } = useProductList();
 
   return (
     <>
@@ -29,7 +16,7 @@ export default function CategoryPage() {
       <section className="border-b bg-gray-100 px-6 py-8">
         <div className="mx-auto grid max-w-screen-xl items-start gap-8">
           <div className="flex justify-between gap-4">
-            <FilterButton selected={search} />
+            <FilterButton selected={filter} />
             <button>Sortieren</button>
           </div>
 
