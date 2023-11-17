@@ -17,6 +17,10 @@ export default function FilterButton({
   const onSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
 
+    for (const [key] of searchParams.entries()) {
+      current.delete(key);
+    }
+
     const value = event.target.value.trim();
 
     if (!value) {
