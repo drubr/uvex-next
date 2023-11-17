@@ -1,10 +1,11 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import ProductTabs from "@/components/ProductTabs";
-import ProductImageGallery from "@/components/ProductImageGallery";
-import ProductBuyConfiguration from "@/components/ProductBuyConfiguration";
+import ProductTabs from "@/components/ProductDetailPage/ProductTabs";
+import ProductImageGallery from "@/components/ProductDetailPage/ProductImageGallery";
+import ProductBuyConfiguration from "@/components/ProductDetailPage/ProductBuyConfiguration";
 import { useGetProduct } from "@/hooks/useGetProduct";
+import { useGetAllSearchParams } from "@/hooks/useGetAllSearchParams";
 
 export default function ProductDetailPage({
   params,
@@ -13,8 +14,13 @@ export default function ProductDetailPage({
 }) {
   const router = useRouter();
   const product = useGetProduct(params.id);
+  const searchParams = useGetAllSearchParams();
+
+  console.log(searchParams);
 
   if (!product || !product.isAvailable) router.replace("/category");
+
+  /** https://xevu-next.vercel.app/product/2?variant=white-matt-–-pink&thumbnail=3&tab=details */
 
   return (
     <div className="mt-4">
