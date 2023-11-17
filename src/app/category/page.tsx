@@ -22,9 +22,9 @@ export default function CategoryPage() {
 
           {productList && (
             <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {productList.map((product) => (
+              {productList.map((product, index) => (
                 <li key={product.id}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} priority={index < 3} />
                 </li>
               ))}
             </ul>

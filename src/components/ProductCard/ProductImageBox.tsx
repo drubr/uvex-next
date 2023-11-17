@@ -2,13 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { Variant } from "@/interfaces";
+import { formatVariantTitle } from "@/helpers";
 
 export default function ProductImageBox({
   productId,
   selectedVariant,
+  priority,
 }: {
   productId: string;
   selectedVariant: Variant;
+  priority: boolean;
 }) {
   const product = useGetProduct(productId);
 
@@ -19,7 +22,7 @@ export default function ProductImageBox({
       <Link
         href={{
           pathname: `product/${product.id}`,
-          query: { variant: selectedVariant.title.replaceAll(" ", "-") },
+          query: { variant: formatVariantTitle(selectedVariant.title) },
         }}
       >
         <Image
@@ -32,7 +35,8 @@ export default function ProductImageBox({
           }
           className="object-contain"
           alt={product.title}
-          loading="lazy"
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
           draggable={false}
         />
       </Link>

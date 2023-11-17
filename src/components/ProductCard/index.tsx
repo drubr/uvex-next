@@ -6,8 +6,9 @@ import ProductTextBox from "@/components/ProductCard/ProductTextBox";
 
 interface ProductProps {
   product: Product;
+  priority: boolean;
 }
-export default function ProductCard({ product }: ProductProps) {
+export default function ProductCard({ product, priority }: ProductProps) {
   const productId = product.id.toString();
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 
@@ -19,6 +20,7 @@ export default function ProductCard({ product }: ProductProps) {
       <ProductImageBox
         productId={productId}
         selectedVariant={selectedVariant}
+        priority={priority}
       />
 
       <div className="grid gap-4">
