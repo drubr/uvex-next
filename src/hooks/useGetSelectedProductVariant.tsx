@@ -4,5 +4,7 @@ export function useGetSelectedProductVariant(): string | undefined {
   const searchParams = useSearchParams();
   const selectedVariant = searchParams.get("variant");
 
-  return selectedVariant ? selectedVariant : undefined;
+  if (!selectedVariant) return undefined;
+
+  return selectedVariant.replaceAll(" ", "-");
 }

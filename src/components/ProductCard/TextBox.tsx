@@ -22,9 +22,10 @@ export default function TextBox({
           className="font-bold"
           onClick={() =>
             router.push(
-              `product/${
-                product.id
-              }?variant=${selectedVariant.option.replaceAll(" ", "-")}`,
+              `product/${product.id}?variant=${selectedVariant.title.replaceAll(
+                " ",
+                "-",
+              )}`,
             )
           }
         >

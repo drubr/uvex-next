@@ -19,7 +19,7 @@ export default function ImageBox({
       <Link
         href={{
           pathname: `product/${product.id}`,
-          query: { variant: selectedVariant.option.replaceAll(" ", "-") },
+          query: { variant: selectedVariant.title.replaceAll(" ", "-") },
         }}
       >
         <Image

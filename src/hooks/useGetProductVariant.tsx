@@ -1,6 +1,7 @@
 import { Variant } from "@/interfaces";
 import { useSearchParams } from "next/navigation";
 import { products } from "@/data";
+import { formatVariantTitle } from "@/helpers";
 
 export function useGetProductVariant(productId: string): Variant | undefined {
   const searchParams = useSearchParams();
@@ -10,7 +11,7 @@ export function useGetProductVariant(productId: string): Variant | undefined {
   if (!product) return undefined;
 
   const variant = product.variants.find(
-    (variant) => variant.option === selectedVariant,
+    (variant) => formatVariantTitle(variant.title) === selectedVariant,
   );
 
   return variant ? variant : undefined;

@@ -4,6 +4,7 @@ import { useGetProduct } from "@/hooks/useGetProduct";
 import { Dispatch, SetStateAction, useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { Variant } from "@/interfaces";
+import { formatVariantTitle } from "@/helpers";
 
 export default function VariantSelection({
   productId,
@@ -36,6 +37,19 @@ export default function VariantSelection({
     [searchParams],
   );
 
+  const setProductUrl = useCallback(
+    (productTitle: string, variantTitle: string) => {
+      return (
+        pathname +
+        "?" +
+        createQueryString("product", `${formatVariantTitle(productTitle)}`) +
+        "?" +
+        createQueryString("variant", `${formatVariantTitle(variantTitle)}`)
+      );
+    },
+    [createQueryString, pathname],
+  );
+
   if (!product || !product.variants) return null;
 
   return (
@@ -47,37 +61,26 @@ export default function VariantSelection({
             onClick={() => setSelectedVariant(variant)}
           >
             <Link
-              href={
-                pathname +
-                "?" +
-                createQueryString(
-                  "product",
-                  `${product.title.replaceAll(" ", "")}`,
-                ) +
-                "?" +
-                createQueryString(
-                  "variant",
-                  `${variant.option.replaceAll(" ", "")}`,
-                )
-              }
+              href={setProductUrl(product.title, variant.title)}
               className={`flex items-center justify-center border p-2 ${
-                variant.option === selectedVariant.option
+                variant.title === selectedVariant.title
                   ? "border-black"
                   : "border-gray-200"
               }`}
               scroll={false}
             >
-              {variant.images
-                ? variant.images && (
-                    <Image
-                      key={index}
-                      src={variant.images[0]}
-                      width={44}
-                      height={44}
-                      alt={`${variant.images[0]} preview`}
-                    />
-                  )
-                : variant.option}
+              {variant.images ? (
+                <Image
+                  key={index}
+                  src={variant.images[0]}
+                  width={44}
+                  height={44}
+                  alt={`${variant.images[0]} preview`}
+                  draggable={false}
+                />
+              ) : (
+                variant.title
+              )}
             </Link>
           </li>
         ))}

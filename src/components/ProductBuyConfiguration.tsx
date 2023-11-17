@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { useGetProductVariant } from "@/hooks/useGetProductVariant";
 import { useGetSelectedProductVariant } from "@/hooks/useGetSelectedProductVariant";
+import Image from "next/image";
+import { formatVariantTitle } from "@/helpers";
 
 export default function ProductBuyConfiguration({
   productId,
@@ -28,22 +30,34 @@ export default function ProductBuyConfiguration({
             <li key={product.id + index}>
               {variant.stock > 0 ? (
                 <Link
-                  href={`/product/${product.id}?variant=${variant.option}`}
+                  href={`/product/${product.id}?variant=${formatVariantTitle(
+                    variant.title,
+                  )}`}
                   className={`flex items-center justify-center border p-2 ${
-                    selectedVariant === variant.option.replaceAll(" ", "-")
+                    selectedVariant === formatVariantTitle(variant.title)
                       ? "border-black"
                       : "border-gray-200"
                   }`}
                   scroll={false}
                 >
-                  {variant.option}
+                  {variant.images ? (
+                    <Image
+                      key={index}
+                      src={variant.images[0]}
+                      width={44}
+                      height={44}
+                      alt={`${variant.images[0]} thumbnail`}
+                    />
+                  ) : (
+                    variant.title
+                  )}
                 </Link>
               ) : (
                 <button
                   className="flex items-center justify-center border p-2"
                   disabled
                 >
-                  <div className="opacity-30">{variant.option}</div>
+                  <div className="opacity-30">{variant.title}</div>
                 </button>
               )}
             </li>

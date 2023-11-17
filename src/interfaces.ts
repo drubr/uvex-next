@@ -19,7 +19,7 @@ export interface Product {
 
 export interface Variant extends Partial<Product> {
   id: number;
-  option: string;
+  title: string;
   price: number;
   stock: number;
 }

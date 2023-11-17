@@ -7,13 +7,13 @@ export const products: IProduct[] = [
     variants: [
       {
         id: 1,
-        option: "Small",
+        title: "Small",
         description: "This is a variant description",
         price: 19.99,
         stock: 10,
       },
-      { id: 2, option: "Medium", price: 24.99, stock: 15 },
-      { id: 3, option: "Large", price: 29.99, stock: 0 },
+      { id: 2, title: "Medium", price: 24.99, stock: 15 },
+      { id: 3, title: "Large", price: 29.99, stock: 0 },
     ],
     images: [
       "/product/uvex-invictus-MIPS-0.jpg",
@@ -40,7 +40,7 @@ export const products: IProduct[] = [
     variants: [
       {
         id: 1,
-        option: "purple bash matt",
+        title: "purple bash matt",
         price: 19.99,
         stock: 10,
         images: [
@@ -52,7 +52,7 @@ export const products: IProduct[] = [
       },
       {
         id: 2,
-        option: "white matt – silver",
+        title: "white matt – silver",
         price: 24.99,
         stock: 15,
         images: [
@@ -64,19 +64,19 @@ export const products: IProduct[] = [
       },
       {
         id: 3,
-        option: "white matt – pink",
+        title: "white matt – pink",
         price: 29.99,
         stock: 8,
         images: [
           "/product/uvex-evidnt-ATTRACT-02-1.jpg",
           "/product/uvex-evidnt-ATTRACT-02-2.jpg",
           "/product/uvex-evidnt-ATTRACT-02-3.jpg",
-          "/product/uvex-evidnt-ATTRACT-04-4.jpg",
+          "/product/uvex-evidnt-ATTRACT-02-4.jpg",
         ],
       },
       {
         id: 3,
-        option: "arctic blue matt",
+        title: "arctic blue matt",
         price: 29.99,
         stock: 8,
         images: [
@@ -96,13 +96,13 @@ export const products: IProduct[] = [
     stock: 33,
     isAvailable: true,
     manufacturer: "uvex sports",
-    category: "/wintersport/skihelme",
+    category: "/wintersport/skibrille",
     isNew: true,
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     attributes: [
-      { key: "Type", value: "Helmet" },
-      { key: "Category", value: "Racing sport" },
-      { key: "Weight", value: "550g" },
+      { key: "Type", value: "Gogglees" },
+      { key: "Category", value: "Snowboarding" },
+      { key: "Weight", value: "175g" },
     ],
     rating: 1,
   },
@@ -110,9 +110,9 @@ export const products: IProduct[] = [
     id: 3,
     title: "Example product – 3",
     variants: [
-      { id: 1, option: "Small", price: 19.99, stock: 10 },
-      { id: 2, option: "Medium", price: 24.99, stock: 15 },
-      { id: 3, option: "Large", price: 29.99, stock: 8 },
+      { id: 1, title: "Small", price: 19.99, stock: 10 },
+      { id: 2, title: "Medium", price: 24.99, stock: 15 },
+      { id: 3, title: "Large", price: 29.99, stock: 8 },
     ],
     images: [
       "/product/uvex-invictus-MIPS-0.jpg",
@@ -137,9 +137,9 @@ export const products: IProduct[] = [
     id: 4,
     title: "New in: Example prodcut",
     variants: [
-      { id: 1, option: "Small", price: 19.99, stock: 10 },
-      { id: 2, option: "Medium", price: 24.99, stock: 15 },
-      { id: 3, option: "Large", price: 29.99, stock: 8 },
+      { id: 1, title: "Small", price: 19.99, stock: 10 },
+      { id: 2, title: "Medium", price: 24.99, stock: 15 },
+      { id: 3, title: "Large", price: 29.99, stock: 8 },
     ],
     images: [
       "/product/uvex-invictus-MIPS-0.jpg",
@@ -164,9 +164,9 @@ export const products: IProduct[] = [
     id: 5,
     title: "Another Product Title",
     variants: [
-      { id: 1, option: "Small", price: 19.99, stock: 10 },
-      { id: 2, option: "Medium", price: 24.99, stock: 15 },
-      { id: 3, option: "Large", price: 29.99, stock: 8 },
+      { id: 1, title: "Small", price: 19.99, stock: 10 },
+      { id: 2, title: "Medium", price: 24.99, stock: 15 },
+      { id: 3, title: "Large", price: 29.99, stock: 8 },
     ],
     images: [
       "/product/uvex-invictus-MIPS-0.jpg",
