@@ -5,6 +5,7 @@ import { useGetProductVariant } from "@/hooks/useGetProductVariant";
 import { useGetSelectedProductVariant } from "@/hooks/useGetSelectedProductVariant";
 import { useSetSearchParam } from "@/hooks/useSetSearchParam";
 
+/** Use this hook if you want to read the state of a page based on the URL */
 export const useUrlState = () => {
   const pathname = usePathname();
   const searchParams = useGetAllSearchParams();

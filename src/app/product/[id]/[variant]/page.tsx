@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { variant: string } }) {
     <div className="mt-4">
       <section className="mx-auto grid w-full max-w-screen-xl items-start gap-8 p-8 lg:grid-cols-[2fr_1fr]">
         <div className="grid gap-8">
-          <ProductImageGallery productId={variantId} />
+          <ProductImageGallery />
           <ProductTabs productId={variantId} />
         </div>
 
