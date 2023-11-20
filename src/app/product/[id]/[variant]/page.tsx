@@ -3,10 +3,17 @@
 import ProductImageGallery from "@/components/ProductDetailPage/ProductImageGallery";
 import ProductTabs from "@/components/ProductDetailPage/ProductTabs";
 import ProductBuyConfiguration from "@/components/ProductDetailPage/ProductBuyConfiguration";
-import { useGetProductVariant } from "@/hooks/useGetProductVariant";
+import { products } from "@/data";
+import { formatProductTitle } from "@/helpers";
 
 export default function Page({ params }: { params: { variant: string } }) {
-  const variant = useGetProductVariant(params.variant);
+  const variant = products.find((product) =>
+    product.variants.find(
+      (variant) =>
+        formatProductTitle(variant.title) ===
+        formatProductTitle(params.variant),
+    ),
+  );
 
   if (!variant) return <div>No product found :)</div>;
 

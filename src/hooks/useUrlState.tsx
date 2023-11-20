@@ -2,7 +2,6 @@ import { usePathname } from "next/navigation";
 import { useGetAllSearchParams } from "@/hooks/useGetAllSearchParams";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { useGetProductVariant } from "@/hooks/useGetProductVariant";
-import { useGetSelectedProductVariant } from "@/hooks/useGetSelectedProductVariant";
 import { useSetSearchParam } from "@/hooks/useSetSearchParam";
 
 /** Use this hook if you want to read the state of a page based on the URL */
@@ -19,7 +18,6 @@ export const useUrlState = () => {
     productId: productId,
     product: useGetProduct(productId),
     variant: useGetProductVariant(productId),
-    selectedVariant: useGetSelectedProductVariant(),
     thumbnail: searchParams.find((param) => param.key === "thumbnail")?.value,
     tab: searchParams.find((param) => param.key === "tab")?.value,
     setUrl: setURL,

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { Dispatch, SetStateAction } from "react";
 import { Variant } from "@/interfaces";
-import { formatVariantTitle } from "@/helpers";
+import { formatProductTitle } from "@/helpers";
 import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductVariantSelection({
@@ -44,7 +44,7 @@ export default function ProductVariantSelection({
             )}
 
             <Link
-              href={setUrl("variant", formatVariantTitle(variant.title))}
+              href={setUrl("variant", formatProductTitle(variant.title))}
               className={`flex items-center justify-center border p-2 ${
                 variant.title === selectedVariant?.title
                   ? "border-black"

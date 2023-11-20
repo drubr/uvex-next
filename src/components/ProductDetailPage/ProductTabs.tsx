@@ -21,8 +21,6 @@ export default function ProductTabs() {
   const { product, variant, tab, setUrl } = useUrlState();
   const selectedTab = Number(tab) ? Number(tab) : 0;
 
-  console.log(selectedTab);
-
   if (!product) return <div>No product found. :)</div>;
 
   return (

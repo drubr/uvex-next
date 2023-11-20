@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useGetProduct } from "@/hooks/useGetProduct";
 import { Variant } from "@/interfaces";
-import { formatVariantTitle } from "@/helpers";
+import { formatProductTitle } from "@/helpers";
 
 export default function ProductImageBox({
   productId,
@@ -22,7 +22,7 @@ export default function ProductImageBox({
       <Link
         href={{
           pathname: `product/${product.id}`,
-          query: { variant: formatVariantTitle(selectedVariant.title) },
+          query: { variant: formatProductTitle(selectedVariant.title) },
         }}
       >
         <Image

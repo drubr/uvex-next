@@ -1,2 +1,2 @@
-export const formatVariantTitle = (variantTitle: string) =>
-  variantTitle.replaceAll(" ", "-");
+export const formatProductTitle = (productTitle: string) =>
+  productTitle.replaceAll(" ", "-");
