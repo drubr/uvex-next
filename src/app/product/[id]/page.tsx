@@ -16,7 +16,12 @@ export default function ProductDetailPage({
 
   if (!product || !product.isAvailable) router.replace("/category");
 
-  /** https://xevu-next.vercel.app/product/2?variant=white-matt-–-pink&thumbnail=3&tab=details */
+  /**
+   * Product Detail Domain possibilities
+   * http://localhost:3000/product/2?variant=arctic-blue-matt
+   * http://localhost:3000/product/2?variant=arctic-blue-matt&thumbnail=3&tab=details
+   * http://localhost:3000/product/2/arctic-blue-matt
+   * */
 
   return (
     <div className="mt-4">

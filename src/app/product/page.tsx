@@ -5,6 +5,7 @@ import ProductCard from "@/components/ProductCard";
 
 export default function ProductPage() {
   const products = useGetAllProducts();
+
   return (
     <div className="p-8">
       <h1 className="text-2xl">All products</h1>
