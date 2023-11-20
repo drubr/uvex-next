@@ -9,7 +9,6 @@ interface ProductProps {
   priority: boolean;
 }
 export default function ProductCard({ product, priority }: ProductProps) {
-  const productId = product.id.toString();
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 
   return (
@@ -18,19 +17,16 @@ export default function ProductCard({ product, priority }: ProductProps) {
       className="grid w-full gap-2 bg-white p-4 text-left disabled:opacity-40"
     >
       <ProductImageBox
-        productId={productId}
+        product={product}
         selectedVariant={selectedVariant}
         priority={priority}
       />
 
       <div className="grid gap-4">
-        <ProductTextBox
-          productId={productId}
-          selectedVariant={selectedVariant}
-        />
+        <ProductTextBox product={product} selectedVariant={selectedVariant} />
 
         <ProductVariantSelection
-          productId={productId}
+          product={product}
           selectedVariant={selectedVariant}
           setSelectedVariant={setSelectedVariant}
         />

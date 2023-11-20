@@ -1,10 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useUrlState } from "@/hooks/useUrlState";
+import { Product, Variant } from "@/interfaces";
 
-export default function ProductImageGallery() {
-  const { product, variant, thumbnail, setUrl } = useUrlState();
-
+export default function ProductImageGallery({
+  product,
+  variant,
+  thumbnail,
+  setUrl,
+}: {
+  product?: Product;
+  variant?: Variant;
+  thumbnail?: string;
+  setUrl: (name: string, value: string | number) => string;
+}) {
   const images = variant?.images ? variant.images : product?.images;
 
   const currentThumbnail =

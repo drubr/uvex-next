@@ -1,6 +1,7 @@
 import { StarIcon } from "@heroicons/react/24/outline";
 import { useUrlState } from "@/hooks/useUrlState";
 import Link from "next/link";
+import { Product, Variant } from "@/interfaces";
 
 const tabs = [
   {
@@ -17,8 +18,17 @@ const tabs = [
   },
 ];
 
-export default function ProductTabs() {
-  const { product, variant, tab, setUrl } = useUrlState();
+export default function ProductTabs({
+  product,
+  variant,
+  tab,
+}: {
+  product?: Product;
+  variant?: Variant;
+  tab?: string;
+  setUrl: (name: string, value: string | number) => string;
+}) {
+  const { setUrl } = useUrlState();
   const selectedTab = Number(tab) ? Number(tab) : 0;
 
   if (!product) return <div>No product found. :)</div>;

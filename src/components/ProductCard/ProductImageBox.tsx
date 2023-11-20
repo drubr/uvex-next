@@ -1,21 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Variant } from "@/interfaces";
+import { Product, Variant } from "@/interfaces";
 import { formatProductTitle } from "@/helpers";
-import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductImageBox({
-  productId,
+  product,
   selectedVariant,
   priority,
 }: {
-  productId: string;
+  product: Product;
   selectedVariant: Variant;
   priority: boolean;
 }) {
-  const { getProductById } = useUrlState();
-  const product = getProductById(productId);
-
   if (!product) return null;
 
   return (

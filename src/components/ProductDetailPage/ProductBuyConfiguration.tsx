@@ -1,14 +1,14 @@
 import Link from "next/link";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
-import { useUrlState } from "@/hooks/useUrlState";
+import { Product, Variant } from "@/interfaces";
 
 export default function ProductBuyConfiguration({
-  productId,
+  product,
+  variant,
 }: {
-  productId: string;
+  product?: Product;
+  variant?: Variant;
 }) {
-  const { product, variant } = useUrlState();
-
   if (!product) return <div>No product found. :)</div>;
 
   return (
@@ -20,10 +20,7 @@ export default function ProductBuyConfiguration({
       </header>
 
       {product.variants.length > 0 && (
-        <ProductVariantSelection
-          productId={productId}
-          selectedVariant={variant}
-        />
+        <ProductVariantSelection product={product} selectedVariant={variant} />
       )}
 
       <div className="mt-8 grid w-full max-w-md">

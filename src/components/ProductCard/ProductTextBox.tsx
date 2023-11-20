@@ -1,18 +1,14 @@
 import { useRouter } from "next/navigation";
-import { Variant } from "@/interfaces";
-import { useUrlState } from "@/hooks/useUrlState";
+import { Product, Variant } from "@/interfaces";
 
 export default function ProductTextBox({
-  productId,
+  product,
   selectedVariant,
 }: {
-  productId: string;
+  product: Product;
   selectedVariant: Variant;
 }) {
   const router = useRouter();
-  const { getProductById } = useUrlState();
-  const product = getProductById(productId);
-
   if (!product) return null;
 
   return (

@@ -1,21 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Dispatch, SetStateAction } from "react";
-import { Variant } from "@/interfaces";
+import { Product, Variant } from "@/interfaces";
 import { formatProductTitle } from "@/helpers";
 import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductVariantSelection({
-  productId,
+  product,
   selectedVariant,
   setSelectedVariant,
 }: {
-  productId: string;
+  product: Product;
   selectedVariant?: Variant;
   setSelectedVariant?: Dispatch<SetStateAction<Variant>>;
 }) {
-  const { setUrl, getProductById } = useUrlState();
-  const product = getProductById(productId);
+  const { setUrl } = useUrlState();
 
   if (!product || !product.variants) return null;
 
