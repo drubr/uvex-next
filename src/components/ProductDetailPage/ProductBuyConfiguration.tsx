@@ -25,7 +25,6 @@ export default function ProductBuyConfiguration({
         <ProductVariantSelection
           productId={productId}
           selectedVariant={variant}
-          page="Product"
         />
       )}
 
