@@ -28,7 +28,7 @@ export default function ProductDetailPage({
       <section className="mx-auto grid w-full max-w-screen-xl items-start gap-8 p-8 lg:grid-cols-[2fr_1fr]">
         <div className="grid gap-8">
           <ProductImageGallery />
-          <ProductTabs productId={params.id} />
+          <ProductTabs />
         </div>
 
         <div className="sticky top-4 grid gap-2">

@@ -1,7 +1,6 @@
 import { StarIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
-import { useGetProductVariant } from "@/hooks/useGetProductVariant";
-import { useGetProduct } from "@/hooks/useGetProduct";
+import { useUrlState } from "@/hooks/useUrlState";
+import Link from "next/link";
 
 const tabs = [
   {
@@ -18,10 +17,11 @@ const tabs = [
   },
 ];
 
-export default function ProductTabs({ productId }: { productId: string }) {
-  const product = useGetProduct(productId);
-  const variant = useGetProductVariant(productId);
-  const [selectedTab, setSelectedTabs] = useState(0);
+export default function ProductTabs() {
+  const { product, variant, tab, setUrl } = useUrlState();
+  const selectedTab = Number(tab) ? Number(tab) : 0;
+
+  console.log(selectedTab);
 
   if (!product) return <div>No product found. :)</div>;
 
@@ -29,15 +29,16 @@ export default function ProductTabs({ productId }: { productId: string }) {
     <div className="grid gap-4">
       <header className="flex gap-4">
         {tabs.map((tab, index) => (
-          <button
+          <Link
             key={tab.title}
+            href={setUrl("tab", index)}
             className={`${
               index === selectedTab ? "border-orange-400" : "border-transparent"
             } border-b-2 pb-2 transition`}
-            onClick={() => setSelectedTabs(index)}
+            scroll={false}
           >
             {tab.title}
-          </button>
+          </Link>
         ))}
       </header>
 
