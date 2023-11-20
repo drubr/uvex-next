@@ -1,6 +1,6 @@
-import { Product } from "@/interfaces";
+import { products } from "@/data";
 
-async function getData() {
+/** async function getData() {
   const res = await fetch("http://localhost:3000/products/api");
 
   if (!res.ok) {
@@ -9,11 +9,11 @@ async function getData() {
   }
 
   return res.json();
-}
+} */
 
 export default async function Products() {
-  const data = await getData();
-  const products: Product[] = JSON.parse(data.data);
+  /** const data = await getData();
+  const products: Product[] = JSON.parse(data.data); */
 
   return (
     <div className="p-8">
