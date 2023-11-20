@@ -8,7 +8,9 @@ export default function ProductImageGallery() {
   const images = variant?.images ? variant.images : product?.images;
 
   const currentThumbnail =
-    Number(thumbnail) <= images.length ? Number(thumbnail) : 0;
+    images?.length && Number(thumbnail) <= images?.length
+      ? Number(thumbnail)
+      : 0;
 
   if (!product || !images) return <div>No product found. :)</div>;
 
