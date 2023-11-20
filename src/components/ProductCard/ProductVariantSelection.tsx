@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useGetProduct } from "@/hooks/useGetProduct";
 import { Dispatch, SetStateAction } from "react";
 import { Variant } from "@/interfaces";
 import { formatProductTitle } from "@/helpers";
@@ -15,13 +14,8 @@ export default function ProductVariantSelection({
   selectedVariant?: Variant;
   setSelectedVariant?: Dispatch<SetStateAction<Variant>>;
 }) {
-  const { setUrl } = useUrlState();
-  const product = useGetProduct(productId);
-
-  /** OR
-   * const { useUpdateSearchParams } = useUpdateSearchParams();
-   * const { useCleanSearchParams } = useCleanSearchParams();
-   * */
+  const { setUrl, getProductById } = useUrlState();
+  const product = getProductById(productId);
 
   if (!product || !product.variants) return null;
 
@@ -36,13 +30,6 @@ export default function ProductVariantSelection({
               setSelectedVariant ? setSelectedVariant(variant) : null;
             }}
           >
-            {variant.stock <= 0 && (
-              <button
-                className="absolute inset-0 cursor-not-allowed bg-white/70"
-                disabled
-              ></button>
-            )}
-
             <Link
               href={setUrl("variant", formatProductTitle(variant.title))}
               className={`flex items-center justify-center border p-2 ${

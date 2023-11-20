@@ -1,6 +1,6 @@
-import { useGetProduct } from "@/hooks/useGetProduct";
 import { useRouter } from "next/navigation";
 import { Variant } from "@/interfaces";
+import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductTextBox({
   productId,
@@ -9,8 +9,9 @@ export default function ProductTextBox({
   productId: string;
   selectedVariant: Variant;
 }) {
-  const product = useGetProduct(productId);
   const router = useRouter();
+  const { getProductById } = useUrlState();
+  const product = getProductById(productId);
 
   if (!product) return null;
 

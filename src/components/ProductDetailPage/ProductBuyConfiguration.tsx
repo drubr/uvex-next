@@ -1,15 +1,13 @@
 import Link from "next/link";
-import { useGetProduct } from "@/hooks/useGetProduct";
-import { useGetProductVariant } from "@/hooks/useGetProductVariant";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
+import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductBuyConfiguration({
   productId,
 }: {
   productId: string;
 }) {
-  const product = useGetProduct(productId);
-  const variant = useGetProductVariant(productId);
+  const { product, variant } = useUrlState();
 
   if (!product) return <div>No product found. :)</div>;
 

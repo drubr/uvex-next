@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import ProductTabs from "@/components/ProductDetailPage/ProductTabs";
 import ProductImageGallery from "@/components/ProductDetailPage/ProductImageGallery";
 import ProductBuyConfiguration from "@/components/ProductDetailPage/ProductBuyConfiguration";
-import { useGetProduct } from "@/hooks/useGetProduct";
+import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductDetailPage({
   params,
@@ -12,7 +12,7 @@ export default function ProductDetailPage({
   params: { id: string };
 }) {
   const router = useRouter();
-  const product = useGetProduct(params.id);
+  const { product } = useUrlState();
 
   if (!product || !product.isAvailable) router.replace("/category");
 
