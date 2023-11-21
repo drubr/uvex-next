@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
 import { Product, Variant } from "@/interfaces";
+import { useCart } from "@/hooks/useCart";
 
 export default function ProductBuyConfiguration({
   product,
@@ -9,6 +10,7 @@ export default function ProductBuyConfiguration({
   product?: Product;
   variant?: Variant;
 }) {
+  const { addProduct } = useCart();
   if (!product) return <div>No product found. :)</div>;
 
   return (
@@ -27,6 +29,7 @@ export default function ProductBuyConfiguration({
         <button
           className="bg-black p-4 text-white disabled:bg-black/30"
           disabled={variant?.stock === 0 || !variant}
+          onClick={() => addProduct(product)}
         >
           {variant ? "Add to cart" : "Please select a variant"}
         </button>
