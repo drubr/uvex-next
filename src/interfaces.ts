@@ -15,6 +15,7 @@ export interface Product {
   isNew: boolean;
   attributes: Attribute[];
   rating: 1 | 2 | 3 | 4 | 5;
+  galleryImages: string[];
 }
 
 export interface Variant extends Partial<Product> {

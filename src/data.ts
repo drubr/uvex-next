@@ -1,6 +1,6 @@
-import { Product as IProduct } from "@/interfaces";
+import { Product } from "@/interfaces";
 
-export const products: IProduct[] = [
+export const products: Product[] = [
   {
     id: 1,
     title: "Example Product",
@@ -33,6 +33,7 @@ export const products: IProduct[] = [
       { key: "Weight", value: "550g" },
     ],
     rating: 4,
+    galleryImages: [],
   },
   {
     id: 2,
@@ -105,6 +106,11 @@ export const products: IProduct[] = [
       { key: "Weight", value: "175g" },
     ],
     rating: 1,
+    galleryImages: [
+      "/product/uvex-evidnt-ATTRACT-gallery-00.jpg",
+      "/product/uvex-evidnt-ATTRACT-gallery-01.jpg",
+      "/product/uvex-evidnt-ATTRACT-gallery-02.jpg",
+    ],
   },
   {
     id: 3,
@@ -132,6 +138,7 @@ export const products: IProduct[] = [
       { key: "Weight", value: "550g" },
     ],
     rating: 5,
+    galleryImages: [],
   },
   {
     id: 4,
@@ -159,6 +166,7 @@ export const products: IProduct[] = [
       { key: "Weight", value: "550g" },
     ],
     rating: 2,
+    galleryImages: [],
   },
   {
     id: 5,
@@ -186,6 +194,7 @@ export const products: IProduct[] = [
       { key: "Weight", value: "550g" },
     ],
     rating: 3,
+    galleryImages: [],
   },
 ];
 

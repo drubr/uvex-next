@@ -1,8 +1,8 @@
 "use client";
 
-import ProductImageGallery from "@/components/ProductDetailPage/ProductImageGallery";
-import ProductTabs from "@/components/ProductDetailPage/ProductTabs";
-import ProductBuyConfiguration from "@/components/ProductDetailPage/ProductBuyConfiguration";
+import ProductImageGallery from "@/components/ProductPage/ProductImageGallery";
+import ProductTabs from "@/components/ProductPage/ProductTabs";
+import ProductBuyConfiguration from "@/components/ProductPage/ProductBuyConfiguration";
 import { useUrlState } from "@/hooks/useUrlState";
 
 export default function VariantPage() {

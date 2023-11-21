@@ -1,8 +1,8 @@
 "use client";
 
-import ProductTabs from "@/components/ProductDetailPage/ProductTabs";
-import ProductImageGallery from "@/components/ProductDetailPage/ProductImageGallery";
-import ProductBuyConfiguration from "@/components/ProductDetailPage/ProductBuyConfiguration";
+import ProductTabs from "@/components/ProductPage/ProductTabs";
+import ProductImageGallery from "@/components/ProductPage/ProductImageGallery";
+import ProductBuyConfiguration from "@/components/ProductPage/ProductBuyConfiguration";
 import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductPage() {
@@ -23,7 +23,7 @@ export default function ProductPage() {
    * */
 
   return (
-    <div className="mt-4">
+    <div className="mt-4 grid gap-16">
       <section className="mx-auto grid w-full max-w-screen-xl items-start gap-8 p-8 lg:grid-cols-[2fr_1fr]">
         <div className="grid gap-8">
           <ProductImageGallery
