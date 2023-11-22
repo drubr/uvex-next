@@ -17,10 +17,14 @@ export default function MiniCart() {
   return (
     <div className="relative z-50">
       <button
+        className="relative"
         aria-label="Cart button with icon"
         onClick={() => toggleMiniCart()}
       >
-        <ShoppingBagIcon className="h-5 w-5" />
+        <div className="absolute -right-1 -top-1 z-0 flex h-3.5 w-3.5 items-center justify-center rounded-full bg-black p-1 text-xs text-white">
+          {products.length}
+        </div>
+        <ShoppingBagIcon className="z-10 h-5 w-5" />
       </button>
 
       <div
