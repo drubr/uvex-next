@@ -231,3 +231,14 @@ export async function getData(): Promise<{ products: Product[] }> {
 
   return JSON.parse(res);
 }
+export async function getProduct(
+  productId: string,
+): Promise<Product | undefined> {
+  const { products } = await getData();
+  return products.find((product) => product.id.toString() === productId);
+}
+
+export async function getProducts(): Promise<Product[]> {
+  const { products } = await getData();
+  return products;
+}
