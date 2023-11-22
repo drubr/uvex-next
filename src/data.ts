@@ -1,5 +1,12 @@
 import { Product } from "@/interfaces";
+import { promises as fs } from "fs";
 
+/**
+ * For a static data import, you can import the data dump "products" below into your file/ component
+ * If you want to fetch data for Server Side Rendering and Server Components, you can you the helper function `getData` below
+ * You find the equivilant data.json file in `./public/data.json`
+ * - So when you want to make changes to your products data, make sure to adjust it in both places – here and in `./public/data.json`
+ * */
 export const products: Product[] = [
   {
     id: 1,
@@ -198,12 +205,29 @@ export const products: Product[] = [
   },
 ];
 
-/**
- * export async function getProducts(): Promise<IProduct[]> {
- *   const res = await fs.readFile(
- *     process.cwd() + "/public/products.json",
- *     "utf8",
- *   );
- *   return JSON.parse(res);
- * }
+/** Use this method to fetch all the data of the page
+ * To adjust the data file, go to `./public/data.json`
+ *
+ * In component usage:
+ * - Mark your page/ component as 'async' `export default async function SomePage() {}`
+ * - Fetch data inside like:
+ *
+ * `export default async function SomePage() {
+ *    const data = await getData()
+ * }`
+ *
+ * You can also destructure your data
+ *
+ * `export default async function SomePage() {
+ *    const { products } = await getData()
+ * }`
+ *
+ * Make sure you adjust the return type of data.json in this method below when you add new data sections to the data.json file
+ *
+ * The file will be server side rendered
  * */
+export async function getData(): Promise<{ products: Product[] }> {
+  const res = await fs.readFile(process.cwd() + "/public/data.json", "utf8");
+
+  return JSON.parse(res);
+}

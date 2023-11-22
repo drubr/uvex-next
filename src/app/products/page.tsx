@@ -1,19 +1,7 @@
-import { products } from "@/data";
+import { getData } from "@/data";
 
-/** async function getData() {
-  const res = await fetch("http://localhost:3000/products/api");
-
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-} */
-
-export default async function Products() {
-  /** const data = await getData();
-  const products: Product[] = JSON.parse(data.data); */
+export default async function ProductsPage() {
+  const { products } = await getData();
 
   return (
     <div className="p-8">
