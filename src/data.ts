@@ -231,8 +231,8 @@ export async function getData(): Promise<{ products: Product[] }> {
     const res = await fs.readFile(process.cwd() + "/public/data.json", "utf8");
     return JSON.parse(res);
   } else {
-    const res = await fs.readFile("/data.json", "utf8");
-    return JSON.parse(res);
+    const res = await fetch("https://xevu-next.vercel.app/data.json");
+    return res.json();
   }
 }
 export async function getProduct(
