@@ -23,14 +23,6 @@ export default function Header() {
               Product
             </Link>
           </li>
-          <li>
-            <Link
-              href="/products"
-              className="rounded bg-transparent p-4 text-black/90 hover:bg-black/10 hover:text-black"
-            >
-              Products
-            </Link>
-          </li>
         </ul>
         <MiniCart />
       </div>
