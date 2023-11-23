@@ -11,8 +11,6 @@ export default function DeleteFromCart({
   const router = useRouter();
   const searchParams = useSearchParams();
   const onDelete = (productId: string | number) => {
-    console.log("Delete...");
-
     const current = new URLSearchParams(Array.from(searchParams.entries()));
 
     current.delete("product", productId.toString());
@@ -20,7 +18,7 @@ export default function DeleteFromCart({
     const search = current.toString();
     const query = search ? `?${search}` : "";
 
-    router.push(`/checkout/cart${query}`, { scroll: false });
+    router.push(`/cart${query}`, { scroll: false });
   };
 
   return (

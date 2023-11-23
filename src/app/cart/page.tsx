@@ -11,8 +11,6 @@ export default async function CartPage({
   const productIds = searchParams.product;
   const products = await getProducts(productIds);
 
-  console.log(searchParams);
-
   if (productIds === undefined || products.length === 0)
     return (
       <div className="flex min-h-full flex-col items-center justify-center gap-2 text-gray-400">

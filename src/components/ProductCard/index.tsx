@@ -13,6 +13,8 @@ interface ProductProps {
 export default function ProductCard({ product, priority }: ProductProps) {
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0]);
 
+  /** @Todo: Add slight appear effect with CSS or framer-motion (check compatibility) */
+
   return (
     <button
       disabled={!product.isAvailable}

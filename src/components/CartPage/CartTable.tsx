@@ -66,7 +66,7 @@ export default function CartTable({
 
       <div className="my-4 flex w-full justify-end border-t pt-4">
         <Link
-          href={`/checkout/cart?${new URLSearchParams(
+          href={`/cart?${new URLSearchParams(
             convertSearchParamsToString(searchParams),
           )}`}
           className="bg-black px-4 py-3 text-white"

@@ -14,7 +14,7 @@ export default async function CategoryPage({
 
   /**
    * @Todo: Product pagination
-   * @Todo: Add Streaming UI (while data is loading)
+   * @Todo: Add Streaming UI skeleton (while data is loading)
    * - For Suspense and components: https://nextjs.org/docs/app/building-your-application/routing/loading-ui-and-streaming
    * - For Page loading Data: https://nextjs.org/docs/getting-started/project-structure#app-routing-conventions
    * */

@@ -53,7 +53,7 @@ export default function ProductBuyConfiguration({
 
         {variant && (
           <Link
-            href={`/checkout?products=${product.id}`}
+            href={`/checkout?product=${product.id}`}
             className="mx-auto w-full animate-fadeUp p-4 text-center delay-700"
           >
             Direct Checkout

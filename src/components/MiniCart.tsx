@@ -98,7 +98,7 @@ export default function MiniCart() {
           </div>
 
           <Link
-            href="/checkout/cart"
+            href="/cart"
             className="block bg-black p-2 text-center text-white"
           >
             Go to Cart
