@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 
 import { getProducts } from "@/lib";
+import Link from "next/link";
 
 export default async function CheckoutPage({
   searchParams,
@@ -10,7 +11,21 @@ export default async function CheckoutPage({
   const productIds = searchParams.product;
   const products = await getProducts(productIds);
 
-  console.log(productIds);
+  if (productIds === undefined || products.length === 0)
+    return (
+      <div className="flex min-h-full flex-col items-center justify-center gap-2 text-gray-400">
+        <header className="flex flex-wrap gap-2">
+          <h1>No matching product in cart.</h1>
+          <p>:)</p>
+        </header>
+        <Link
+          href="/category"
+          className="rounded border border-black bg-black px-4 py-3 text-white"
+        >
+          Explore products
+        </Link>
+      </div>
+    );
 
   return (
     <div className="flex min-h-[60vh] items-center justify-center">
