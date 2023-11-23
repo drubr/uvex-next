@@ -40,3 +40,39 @@ export const filterProducts = (
 
   return finalProducts;
 };
+
+export const convertSearchParamsToString = (params: {
+  [_: string]: string | string[] | undefined;
+}): string => {
+  const searchParams = new URLSearchParams();
+
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined) {
+      if (Array.isArray(value)) {
+        value.forEach((val) => searchParams.append(key, val));
+      } else {
+        searchParams.append(key, value);
+      }
+    }
+  });
+
+  return searchParams.toString();
+};
+
+export const calculateCartSummary = (products: Product[]) => {
+  const productTotal = products
+    .reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.variants[0].price,
+      0,
+    )
+    .toFixed(2);
+  const shippingTotal = 0.0;
+  const total = Number(productTotal + shippingTotal).toFixed(2);
+
+  return {
+    productTotal,
+    shippingTotal,
+    total,
+  };
+};

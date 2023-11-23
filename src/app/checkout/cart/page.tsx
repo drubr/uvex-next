@@ -1,78 +1,45 @@
-"use client";
-
-import { useCart } from "@/hooks/useCart";
-import Image from "next/image";
-import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { getProducts } from "@/lib";
+import CartTable from "@/components/CartPage/CartTable";
+import CartSummary from "@/components/CartPage/CartSummary";
 
-export default function CartPage() {
-  const { products, total, deleteProduct } = useCart();
+export default async function CartPage({
+  searchParams,
+}: {
+  searchParams: { [_: string]: string | string[] | undefined };
+}) {
+  const productIds = searchParams.product;
+  const products = await getProducts(productIds);
+
+  console.log(searchParams);
+
+  if (productIds === undefined || products.length === 0)
+    return (
+      <div className="flex min-h-full flex-col items-center justify-center gap-2 text-gray-400">
+        <header className="flex flex-wrap gap-2">
+          <h1>No matching product in cart.</h1>
+          <p>:)</p>
+        </header>
+        <Link
+          href="/category"
+          className="rounded border border-black bg-black px-4 py-3 text-white"
+        >
+          Explore products
+        </Link>
+      </div>
+    );
+
   return (
     <>
       <div className="p-8">
         <h1 className="text-2xl">Cart</h1>
       </div>
 
-      <section className="grid gap-4 px-8">
-        <table className="w-full">
-          <thead className="sticky top-0 border-b bg-white pb-4 text-left">
-            <tr>
-              <th className="p-4 pl-0">Products</th>
-              <th className="p-4">Price</th>
-              <th className="p-4">Amount</th>
-              <th className="p-4">Sum</th>
-              <th className="p-4"></th>
-            </tr>
-          </thead>
+      <section className="grid gap-4 px-8 xl:grid-cols-[1fr_auto] xl:items-start">
+        <CartTable products={products} searchParams={searchParams} />
 
-          <tbody>
-            {products.map((product, index) => (
-              <tr key={index}>
-                <td className="flex gap-8 p-4 text-start">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.title}
-                    width={128}
-                    height={128}
-                  />
-                  <h2>{product.title}</h2>
-                </td>
-                <td className="p-4">{product.variants[0].price} €</td>
-                <td className="p-4">
-                  <input
-                    type="text"
-                    defaultValue={1}
-                    className="w-auto border px-4 py-2"
-                  />
-                </td>
-                <td className="p-4">{product.variants[0].price} €</td>
-                <td className="inline-flex justify-start gap-4">
-                  <Link href={`/product/${product.id}`}>
-                    <PencilIcon className="h-5 w-5" />
-                  </Link>
-
-                  <button onClick={() => deleteProduct(product.id.toString())}>
-                    <TrashIcon className="h-5 w-5" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-
-          <tfoot>
-            <tr className="border-t">
-              <td className="w-full pt-4">
-                <button className="ml-auto block bg-black px-4 py-3 text-white">
-                  Refresh cart
-                </button>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-
-        <div>
-          <h2>Summary</h2>
-          <div>{total}</div>
+        <div className="sticky top-4">
+          <CartSummary products={products} />
         </div>
       </section>
     </>

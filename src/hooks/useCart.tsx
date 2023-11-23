@@ -11,7 +11,7 @@ export function useCart() {
     cartDrawerOpen: boolean;
   }>({
     products: [...products],
-    miniCartOpen: true,
+    miniCartOpen: false,
     cartDrawerOpen: false,
   });
 
