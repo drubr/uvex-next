@@ -227,10 +227,13 @@ export const products: Product[] = [
  * The file will be server side rendered
  * */
 export async function getData(): Promise<{ products: Product[] }> {
-  const fileLocation =
-    process.env.NODE_ENV === "development" ? "/public/data.json" : "/data.json";
-  const res = await fs.readFile(process.cwd() + fileLocation, "utf8");
-  return JSON.parse(res);
+  if (process.env.NODE_ENV === "development") {
+    const res = await fs.readFile(process.cwd() + "/public/data.json", "utf8");
+    return JSON.parse(res);
+  } else {
+    const res = await fs.readFile("/data.json", "utf8");
+    return JSON.parse(res);
+  }
 }
 export async function getProduct(
   productId: string,
