@@ -6,15 +6,17 @@ import type { SortingOption } from "@/types";
 
 const options: SortingOption[] = [
   "Relevance",
+  "Alphabetical",
   "Price lowest",
   "Price highest",
-  "Alphabetical",
 ];
 
 export default function SortingButton({
   selected,
+  withCleanUp,
 }: {
-  selected: string | null;
+  selected: string | string[] | undefined;
+  withCleanUp?: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -23,8 +25,10 @@ export default function SortingButton({
   const onSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
 
-    for (const [key] of searchParams.entries()) {
-      current.delete(key);
+    if (withCleanUp) {
+      for (const [key] of searchParams.entries()) {
+        current.delete(key);
+      }
     }
 
     const value = event.target.value.trim();

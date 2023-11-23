@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/interfaces";
 import { useState } from "react";
 import ProductImageBox from "@/components/ProductCard/ProductImageBox";

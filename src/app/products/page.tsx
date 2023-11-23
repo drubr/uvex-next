@@ -1,10 +1,7 @@
-import { getData, getProduct } from "@/data";
+import { getData } from "@/data";
 
 export default async function ProductsPage() {
   const { products } = await getData();
-  const product = await getProduct("1");
-
-  console.log(product);
 
   return (
     <div className="p-8">

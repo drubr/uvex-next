@@ -8,8 +8,10 @@ const options: FilterOption[] = ["In stock"];
 
 export default function FilterButton({
   selected,
+  withCleanUp,
 }: {
-  selected: string | null;
+  selected: string | string[] | undefined;
+  withCleanUp?: boolean;
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -18,8 +20,10 @@ export default function FilterButton({
   const onSelect = (event: ChangeEvent<HTMLSelectElement>) => {
     const current = new URLSearchParams(Array.from(searchParams.entries()));
 
-    for (const [key] of searchParams.entries()) {
-      current.delete(key);
+    if (withCleanUp) {
+      for (const [key] of searchParams.entries()) {
+        current.delete(key);
+      }
     }
 
     const value = event.target.value.trim();

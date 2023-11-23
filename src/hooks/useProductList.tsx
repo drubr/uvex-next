@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { products } from "@/data";
 
 export const useProductList = () => {
+  // const products = await getProducts();
   const searchParams = useSearchParams();
   const [productList, setProductList] = useState(products);
   const filter = searchParams.get("filter");

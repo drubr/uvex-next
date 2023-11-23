@@ -179,9 +179,9 @@ export const products: Product[] = [
     id: 5,
     title: "Another Product Title",
     variants: [
-      { id: 1, title: "Small", price: 19.99, stock: 10 },
-      { id: 2, title: "Medium", price: 24.99, stock: 15 },
-      { id: 3, title: "Large", price: 29.99, stock: 8 },
+      { id: 1, title: "Small", price: 19.99, stock: 0 },
+      { id: 2, title: "Medium", price: 24.99, stock: 0 },
+      { id: 3, title: "Large", price: 29.99, stock: 0 },
     ],
     images: [
       "/product/uvex-invictus-MIPS-0.jpg",
@@ -189,7 +189,7 @@ export const products: Product[] = [
       "/product/uvex-invictus-MIPS-2.jpg",
       "/product/uvex-invictus-MIPS-3.jpg",
     ],
-    stock: 33,
+    stock: 0,
     isAvailable: false,
     manufacturer: "uvex sports",
     category: "/wintersport/skihelme",
