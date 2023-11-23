@@ -2,6 +2,8 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { products } from "@/data";
 
+/** @Todo: Clean up hooks and hook usage */
+
 export const useProductList = () => {
   // const products = await getProducts();
   const searchParams = useSearchParams();

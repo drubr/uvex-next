@@ -1,6 +1,6 @@
-import { getProducts } from "@/data";
 import ProductList from "@/components/CategoryPage/ProductList";
 import { filterProducts } from "@/helpers";
+import { getProducts } from "@/lib";
 
 export default async function CategoryPage({
   searchParams,
@@ -11,6 +11,8 @@ export default async function CategoryPage({
   const filter = searchParams.filter;
   const sorting = searchParams.sorting;
   const filteredProducts = filterProducts(products, filter, sorting);
+
+  /** @Todo: Product pagination */
 
   return (
     <>

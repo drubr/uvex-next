@@ -1,7 +1,7 @@
 import Link from "next/link";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
 import { Product, Variant } from "@/interfaces";
-import { useCart } from "@/hooks/useCart";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function ProductBuyConfiguration({
   product,
@@ -10,8 +10,25 @@ export default function ProductBuyConfiguration({
   product?: Product;
   variant?: Variant;
 }) {
-  const { addProduct } = useCart();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   if (!product) return <div>No product found. :)</div>;
+
+  const onAddToCart = (productId: string) => {
+    const current = new URLSearchParams(Array.from(searchParams.entries()));
+
+    for (const [key] of searchParams.entries()) {
+      current.delete(key);
+    }
+
+    current.set("product", productId);
+
+    const search = current.toString();
+    const query = search ? `?${search}` : "";
+
+    router.push(`/checkout${query}`, { scroll: false });
+  };
 
   return (
     <>
@@ -29,14 +46,14 @@ export default function ProductBuyConfiguration({
         <button
           className="bg-black p-4 text-white disabled:bg-black/30"
           disabled={variant?.stock === 0 || !variant}
-          onClick={() => addProduct(product)}
+          onClick={() => onAddToCart(product.id.toString())}
         >
           {variant ? "Add to cart" : "Please select a variant"}
         </button>
 
         {variant && (
           <Link
-            href="/checkout"
+            href={`/checkout?products=${product.id}`}
             className="mx-auto w-full animate-fadeUp p-4 text-center delay-700"
           >
             Direct Checkout

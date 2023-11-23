@@ -11,7 +11,7 @@ export default function ProductPage() {
   /**
    * productId is (would) also be accessible from the page's params;
    * Folder name: [id]
-   * - export default function ProductDetailPage({ params }: { params: { id: string }}) {...}
+   * - export default function ProductDetailPage({ params, searchParams }: { params: { id: string }, searchParams: { ... } }) {...}
    * - const productId: params.id
    * */
 

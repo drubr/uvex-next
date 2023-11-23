@@ -1,11 +1,17 @@
 import { Product } from "@/interfaces";
-import { promises as fs } from "fs";
 
 /**
  * For a static data import, you can import the data dump "products" below into your file/ component
- * If you want to fetch data for Server Side Rendering and Server Components, you can you the helper function `getData` below
- * You find the equivilant data.json file in `./public/data.json`
- * - So when you want to make changes to your products data, make sure to adjust it in both places – here and in `./public/data.json`
+ *
+ * If you want to fetch data from Server and for Server Components,
+ * you can you the helper functions in `./lib/index.ts`
+ *
+ * `getData()`, `getProduct()`, `getProducts()`, ...
+ *
+ * Data file is located in `./public/data.json`
+ *
+ * So when you want to make changes to your products data,
+ * make sure to adjust it in both places – here and in `./public/data.json`
  * */
 export const products: Product[] = [
   {
@@ -204,45 +210,3 @@ export const products: Product[] = [
     galleryImages: [],
   },
 ];
-
-/** Use this method to fetch all the data of the page
- * To adjust the data file, go to `./public/data.json`
- *
- * In component usage:
- * - Mark your page/ component as 'async' `export default async function SomePage() {}`
- * - Fetch data inside like:
- *
- * `export default async function SomePage() {
- *    const data = await getData()
- * }`
- *
- * You can also destructure your data
- *
- * `export default async function SomePage() {
- *    const { products } = await getData()
- * }`
- *
- * Make sure you adjust the return type of data.json in this method below when you add new data sections to the data.json file
- *
- * The file will be server side rendered
- * */
-export async function getData(): Promise<{ products: Product[] }> {
-  if (process.env.NODE_ENV === "development") {
-    const res = await fs.readFile(process.cwd() + "/public/data.json", "utf8");
-    return JSON.parse(res);
-  } else {
-    const res = await fetch("https://xevu-next.vercel.app/data.json");
-    return res.json();
-  }
-}
-export async function getProduct(
-  productId: string,
-): Promise<Product | undefined> {
-  const { products } = await getData();
-  return products.find((product) => product.id.toString() === productId);
-}
-
-export async function getProducts(): Promise<Product[]> {
-  const { products } = await getData();
-  return products;
-}
