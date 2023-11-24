@@ -1,4 +1,5 @@
 import { Product } from "@/interfaces";
+import { Filters } from "@/types";
 
 /**
  * For a static data import, you can import the data dump "products" below into your file/ component
@@ -209,4 +210,17 @@ export const products: Product[] = [
     rating: 3,
     galleryImages: [],
   },
+];
+export const filters: Filters = [
+  [
+    {
+      category: "Availability",
+    },
+    [
+      {
+        key: "In stock",
+        value: "In stock",
+      },
+    ],
+  ],
 ];

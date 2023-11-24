@@ -6,7 +6,7 @@ export const useSetSearchParam = (withParamsCleanUp?: boolean) => {
   const searchParams = useSearchParams();
 
   const createQueryString = useCallback(
-    (name: string, value: string) => {
+    (name: string, value: string, method: "replace" | "append" = "replace") => {
       const params = new URLSearchParams(searchParams);
 
       if (withParamsCleanUp) {
@@ -15,7 +15,18 @@ export const useSetSearchParam = (withParamsCleanUp?: boolean) => {
         }
       }
 
-      params.set(name, value);
+      if (method === "replace") {
+        params.set(name, value);
+      }
+
+      if (method === "append") {
+        if (params.getAll("filter").includes(value)) {
+          params.delete(name, value);
+          return params.toString();
+        }
+
+        params.append(name, value);
+      }
 
       return params.toString();
     },
@@ -23,8 +34,14 @@ export const useSetSearchParam = (withParamsCleanUp?: boolean) => {
   );
 
   const setUrl = useCallback(
-    (name: string, value: string | number) => {
-      return pathname + "?" + createQueryString(name, `${value.toString()}`);
+    (
+      name: string,
+      value: string | number,
+      method: "replace" | "append" = "replace",
+    ) => {
+      return (
+        pathname + "?" + createQueryString(name, `${value.toString()}`, method)
+      );
     },
     [createQueryString, pathname],
   );
