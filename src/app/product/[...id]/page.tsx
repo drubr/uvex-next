@@ -14,10 +14,6 @@ export default async function ProductPage({
   const variant = await getVariant(searchParams.variant);
 
   /**
-   * @Todo: Make this page async
-   */
-
-  /**
    * Product Detail Domain possibilities
    * http://localhost:3000/product/2?variant=arctic-blue-matt
    * http://localhost:3000/product/2?variant=arctic-blue-matt&thumbnail=3&tab=details
