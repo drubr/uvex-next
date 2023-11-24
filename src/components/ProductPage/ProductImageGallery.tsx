@@ -1,18 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Product, Variant } from "@/interfaces";
+import { useUrlState } from "@/hooks/useUrlState";
 
 export default function ProductImageGallery({
   product,
   variant,
-  thumbnail,
-  setUrl,
 }: {
-  product?: Product;
-  variant?: Variant;
-  thumbnail?: string;
-  setUrl: (name: string, value: string | number) => string;
+  product?: Product | undefined;
+  variant: Variant | undefined;
 }) {
+  const { thumbnail, setUrl } = useUrlState();
   const images = variant?.images ? variant.images : product?.images;
 
   const currentThumbnail =

@@ -1,5 +1,6 @@
-import { Product } from "@/interfaces";
+import { Product, Variant } from "@/interfaces";
 import { promises as fs } from "fs";
+import { formatProductTitle } from "@/helpers";
 
 /** Use this method to fetch all the data of the page
  * To adjust the data file, go to `./public/data.json`
@@ -60,4 +61,21 @@ export async function getProducts(
   return products.filter((product) =>
     productIdArray.find((productId) => productId === product.id.toString()),
   );
+}
+
+export async function getVariant(
+  variantId: string | string[] | undefined,
+): Promise<Variant | undefined> {
+  if (variantId === undefined) return;
+
+  const { products } = await getData();
+
+  return products
+    .map((product) => product.variants.filter((variant) => variant))
+    .flat()
+    .find(
+      (variant) =>
+        formatProductTitle(variant?.title) ===
+        formatProductTitle(variantId.toString()),
+    );
 }

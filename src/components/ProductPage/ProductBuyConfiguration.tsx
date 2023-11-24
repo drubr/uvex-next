@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
 import { Product, Variant } from "@/interfaces";
@@ -7,8 +9,8 @@ export default function ProductBuyConfiguration({
   product,
   variant,
 }: {
-  product?: Product;
-  variant?: Variant;
+  product: Product | undefined;
+  variant: Variant | undefined;
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
