@@ -1,7 +1,12 @@
 import { Product } from "@/interfaces";
 
 export const formatProductTitle = (productTitle: string) =>
-  productTitle.replaceAll(" ", "-");
+  productTitle
+    .trim()
+    .replaceAll("-", " ")
+    .replaceAll("–", " ")
+    .replaceAll(" ", "-")
+    .replaceAll("---", "-");
 
 export const filterProducts = (
   products: Product[],
