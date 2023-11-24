@@ -4,6 +4,7 @@ import Link from "next/link";
 import ProductVariantSelection from "@/components/ProductCard/ProductVariantSelection";
 import { Product, Variant } from "@/interfaces";
 import { useRouter, useSearchParams } from "next/navigation";
+import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
 export default function ProductBuyConfiguration({
   product,
@@ -53,13 +54,29 @@ export default function ProductBuyConfiguration({
           {variant ? "Add to cart" : "Please select a variant"}
         </button>
 
-        {variant && (
+        {variant && variant.stock > 0 ? (
           <Link
             href={`/checkout?product=${product.id}`}
             className="mx-auto w-full animate-fadeUp p-4 text-center delay-700"
           >
             Direct Checkout
           </Link>
+        ) : (
+          <form className="mt-2 flex items-center gap-1">
+            <input
+              type="email"
+              className="w-full rounded border p-4"
+              placeholder="E-Mail, Remind me when in stock"
+            />
+
+            <button
+              type="submit"
+              aria-label="Confirm remind me when in stock"
+              className="flex h-full items-center justify-center rounded border p-4"
+            >
+              <EnvelopeIcon className="h-4 w-4" />
+            </button>
+          </form>
         )}
       </div>
     </>
