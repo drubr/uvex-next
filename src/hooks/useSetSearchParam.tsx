@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useGetAllSearchParams } from "@/hooks/useGetAllSearchParams";
 
 export const useSetSearchParam = (withParamsCleanUp?: boolean) => {
   const pathname = usePathname();
@@ -23,15 +22,12 @@ export const useSetSearchParam = (withParamsCleanUp?: boolean) => {
     [searchParams, withParamsCleanUp],
   );
 
-  const setURL = useCallback(
+  const setUrl = useCallback(
     (name: string, value: string | number) => {
       return pathname + "?" + createQueryString(name, `${value.toString()}`);
     },
     [createQueryString, pathname],
   );
 
-  return {
-    setURL,
-    params: useGetAllSearchParams(),
-  };
+  return { setUrl };
 };
