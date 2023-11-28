@@ -1,17 +1,21 @@
 import Link from "next/link";
-import MiniCart from "@/components/MiniCart";
 import { UserCircleIcon } from "@heroicons/react/24/outline";
-import { getCategories } from "@/lib";
 
-export default async function Header() {
-  const categories = await getCategories();
-
+export default function Header({
+  categories,
+}: {
+  categories: {
+    id: number;
+    title: string;
+    link: string;
+  }[];
+}) {
   return (
     <>
       <header className="grid h-32 items-center justify-end bg-black"></header>
       <div className="flex flex-wrap justify-between gap-4 bg-gray-100 p-6">
         <ul className="flex">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <li key={category.id}>
               <Link
                 href={category.link}
@@ -27,8 +31,6 @@ export default async function Header() {
           <Link href="/account?tab=Orders">
             <UserCircleIcon className="h-5 w-5" />
           </Link>
-
-          <MiniCart />
         </div>
       </div>
     </>
