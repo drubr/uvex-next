@@ -1,4 +1,21 @@
 {
+  "categories": [
+    {
+      "id": 1,
+      "title": "Home",
+      "link": "/"
+    },
+    {
+      "id": 2,
+      "title": "Category",
+      "link": "/category"
+    },
+    {
+      "id": 3,
+      "title": "Product",
+      "link": "/product/1"
+    }
+  ],
   "products": [
     {
       "id": 1,

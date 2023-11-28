@@ -23,7 +23,14 @@ import { formatProductTitle } from "@/helpers";
  *
  * The file will be server side rendered
  * */
-export async function getData(): Promise<{ products: Product[] }> {
+export async function getData(): Promise<{
+  products: Product[];
+  categories: {
+    id: number;
+    title: string;
+    link: string;
+  }[];
+}> {
   if (process.env.NODE_ENV === "development") {
     const res = await fs.readFile(process.cwd() + "/public/data.json", "utf8");
     return JSON.parse(res);
@@ -78,4 +85,15 @@ export async function getVariant(
         formatProductTitle(variant?.title) ===
         formatProductTitle(variantId.toString()),
     );
+}
+
+export async function getCategories(): Promise<
+  {
+    id: number;
+    title: string;
+    link: string;
+  }[]
+> {
+  const { categories } = await getData();
+  return categories;
 }

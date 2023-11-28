@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description: "Xevu some description here",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
